@@ -1,48 +1,38 @@
-# Svelte 中文文档站
+<a href="https://svelte.dev">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sveltejs/svelte/main/assets/banner_dark.png">
+		<img src="https://raw.githubusercontent.com/sveltejs/svelte/main/assets/banner.png" alt="Svelte - web development for the rest of us" />
+	</picture>
+</a>
 
-Svelte 官方文档的中文翻译站点，使用 SvelteKit 构建，部署于 GitHub Pages。
+[![License](https://img.shields.io/npm/l/svelte.svg)](https://github.com/sveltejs/svelte/blob/main/LICENSE.md) [![Chat](https://img.shields.io/discord/457912077277855764?label=chat&logo=discord)](https://svelte.dev/chat)
 
-- 线上地址：<https://svelte.ndjp.net>
-- 内容来源：Svelte 官方文档的中文翻译
+## 什么是 Svelte？
 
-## 技术栈
+Svelte 是一种构建 Web 应用的全新方式。它是一款编译器，能够将你编写的声明式组件转换为高效的 JavaScript，并以外科手术般的精度更新 DOM。
 
-- [SvelteKit](https://kit.svelte.dev/) —— 应用框架
-- [Svelte 5](https://svelte.dev/) —— 带 Runes 的 UI 框架
-- [@sveltejs/adapter-static](https://kit.svelte.dev/docs/adapter-static) —— 静态站点适配器
-- [marked](https://marked.js.org/) + [shiki](https://shiki.style/) —— Markdown 解析与代码高亮
-- [gray-matter](https://github.com/jonschlinkert/gray-matter) —— 解析文档 frontmatter
+想了解更多，请访问 [Svelte 官网](https://svelte.dev)，或加入 [Discord 聊天室](https://svelte.dev/chat)。
 
-## 本地开发
+## 支持 Svelte
 
-```bash
-npm install      # 安装依赖
-npm run dev      # 启动开发服务器（默认 http://localhost:5173）
-```
+Svelte 是一个采用 MIT 许可的开源项目，其持续开发完全依赖于一群出色的志愿者。如果你愿意支持他们的工作，请考虑：
 
-## 构建与预览
+- [在 Open Collective 上成为赞助者](https://opencollective.com/svelte)。
 
-```bash
-npm run build    # 构建静态产物到 build/ 目录
-npm run preview  # 本地预览构建结果
-```
+通过 Open Collective 捐赠的资金将用于补偿与 Svelte 开发相关的支出，例如托管费用。如果收到足够的捐款，资金也可能被用于更直接地支持 Svelte 的开发。
 
-## 目录结构
+## 路线图
 
-```
-docs/                 # 文档内容（Markdown，按章节分目录）
-src/lib/              # 文档加载、Markdown 渲染等核心逻辑
-src/routes/           # 页面与布局（首页 / 文档页 / 错误页）
-static/               # 静态资源（含 CNAME 自定义域名配置）
-```
+如果你想了解我们当前正在进行的工作，可以查看[我们的路线图](https://svelte.dev/roadmap)。
 
-## 部署
+## 参与贡献
 
-项目通过 GitHub Actions（`.github/workflows/deploy.yml`）自动部署到 GitHub Pages：
+关于如何为 Svelte 做贡献，请参阅[贡献指南](https://github.com/sveltejs/svelte/blob/main/CONTRIBUTING.md)以及 [`svelte`](https://github.com/sveltejs/svelte/tree/main/packages/svelte) 包。
 
-- 每次推送到 `main` 分支即触发构建并发布。
-- 自定义域名 `svelte.ndjp.net` 由仓库根 `static/CNAME` 文件指定。
+## svelte.dev 无法访问了吗？
+
+大概率没有，但也有可能。如果你似乎无法访问任何 `.dev` 网站，请查看[这个 SuperUser 上的问答](https://superuser.com/q/1413402)。
 
 ## 许可
 
-本站内容基于 Svelte 官方文档翻译，仅供学习参考。Svelte 及其 Logo 版权归 Svelte 团队所有。
+[MIT](https://github.com/sveltejs/svelte/blob/main/LICENSE.md)
