@@ -1,0 +1,16 @@
+node_modules/
+/build/
+/.svelte-kit/
+/.generated/
+/package-lock.json
+
+# 本地日志（不属于源码）
+*.log
+.devserver.*
+devserver.*
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

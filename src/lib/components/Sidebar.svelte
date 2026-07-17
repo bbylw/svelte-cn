@@ -1,0 +1,52 @@
+<script>
+	import { page } from '$app/stores';
+
+	/** @type {{ nav: Array<{ slug: string; title: string; pages: Array<{ slug: string; title: string }> }>; onNavigate: () => void }} */
+	let { nav, onNavigate } = $props();
+
+	let query = $state('');
+
+	function currentPath() {
+		return $page.url.pathname;
+	}
+
+	/**
+	 * @param {string} title
+	 */
+	function matches(title) {
+		if (!query.trim()) return true;
+		return title.toLowerCase().includes(query.trim().toLowerCase());
+	}
+</script>
+
+<aside class="sidebar">
+	<input class="search" type="search" placeholder="搜索文档…" bind:value={query} />
+
+	{#each nav as group}
+		<div class="nav-group">
+			<span class="group-title">{group.title}</span>
+			{#if group.pages.some((p) => matches(p.title))}
+				<a
+					href={`/docs/${group.slug}`}
+					class:active={currentPath() === `/docs/${group.slug}`}
+					class:sub={true}
+					onclick={onNavigate}
+				>
+					概述
+				</a>
+			{/if}
+			{#each group.pages as page}
+				{#if matches(page.title)}
+					<a
+						href={`/docs/${page.slug}`}
+						class:active={currentPath() === `/docs/${page.slug}`}
+						class:sub={true}
+						onclick={onNavigate}
+					>
+						{page.title}
+					</a>
+				{/if}
+			{/each}
+		</div>
+	{/each}
+</aside>
