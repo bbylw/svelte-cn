@@ -2,7 +2,7 @@ node_modules/
 /build/
 /.svelte-kit/
 /.generated/
-/package-lock.json
+
 
 # 本地日志（不属于源码）
 *.log
