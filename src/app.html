@@ -5,11 +5,13 @@
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Svelte 中文文档 - 用于构建 Web 用户界面的编译器框架" />
+		<meta name="color-scheme" content="light dark" />
 		<script>
 			try {
-				const t = localStorage.getItem('theme');
-				if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-					document.documentElement.classList.add('dark');
+				// 'light dark' = 跟随系统；light / dark = 用户显式覆盖（兼容旧版的 theme 键）
+				const stored = localStorage.getItem('color-scheme') || localStorage.getItem('theme');
+				if (stored === 'light' || stored === 'dark') {
+					document.querySelector('meta[name="color-scheme"]').content = stored;
 				}
 			} catch (e) {}
 		</script>

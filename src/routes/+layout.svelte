@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
 	import Header from '#lib/components/Header.svelte';
 	import Sidebar from '#lib/components/Sidebar.svelte';
@@ -10,7 +11,23 @@
 	let menuOpen = $state(false);
 	const isDocs = $derived(page.url.pathname.startsWith('/docs'));
 	const hasToc = $derived(Array.isArray(page.data.toc) && page.data.toc.length > 0);
+
+	// 客户端导航时用 View Transitions 让页面切换更连贯；
+	// 不支持该 API 或用户要求减少动效时，SvelteKit 按原样导航。
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
 </script>
+
+<a class="skip-link" href="#main">跳到主要内容</a>
 
 <Header onMenu={() => (menuOpen = !menuOpen)} />
 
@@ -20,13 +37,15 @@
 	{/if}
 	<div class="docs-shell" class:no-toc={!hasToc}>
 		<Sidebar nav={data.nav} onNavigate={() => (menuOpen = false)} />
-		<main class="content">
+		<main class="content" id="main" tabindex="-1">
 			{@render children()}
 		</main>
 		<Toc toc={page.data.toc} />
 	</div>
 {:else}
-	{@render children()}
+	<main id="main" tabindex="-1">
+		{@render children()}
+	</main>
 {/if}
 
 <footer class="site-footer">
