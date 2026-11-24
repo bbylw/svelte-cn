@@ -1,15 +1,15 @@
 <script>
 	import '../app.css';
-	import { page } from '$app/stores';
-	import Header from '$lib/components/Header.svelte';
-	import Sidebar from '$lib/components/Sidebar.svelte';
-	import Toc from '$lib/components/Toc.svelte';
+	import { page } from '$app/state';
+	import Header from '#lib/components/Header.svelte';
+	import Sidebar from '#lib/components/Sidebar.svelte';
+	import Toc from '#lib/components/Toc.svelte';
 
 	let { children, data } = $props();
 
 	let menuOpen = $state(false);
-	const isDocs = $derived($page.url.pathname.startsWith('/docs'));
-	const hasToc = $derived(Array.isArray($page.data.toc) && $page.data.toc.length > 0);
+	const isDocs = $derived(page.url.pathname.startsWith('/docs'));
+	const hasToc = $derived(Array.isArray(page.data.toc) && page.data.toc.length > 0);
 </script>
 
 <Header onMenu={() => (menuOpen = !menuOpen)} />
@@ -23,7 +23,7 @@
 		<main class="content">
 			{@render children()}
 		</main>
-		<Toc toc={$page.data.toc} />
+		<Toc toc={page.data.toc} />
 	</div>
 {:else}
 	{@render children()}

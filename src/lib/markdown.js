@@ -1,7 +1,7 @@
 import { marked } from 'marked';
 import { createHighlighter } from 'shiki';
-import { slugify } from '$lib/slug.js';
-import { renderNavFlat } from '$lib/docs.server.js';
+import { slugify } from '#lib/slug.js';
+import { renderNavFlat } from '#lib/docs.server.js';
 
 /** @type {ReturnType<typeof createHighlighter> | null} */
 let highlighterPromise = null;

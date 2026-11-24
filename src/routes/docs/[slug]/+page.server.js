@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
-import { loadDocs, getDocBySlugFlat, renderNavFlat, buildToc } from '$lib/docs.server.js';
-import { renderMarkdown } from '$lib/markdown.js';
+import { loadDocs, getDocBySlugFlat, renderNavFlat, buildToc } from '#lib/docs.server.js';
+import { renderMarkdown } from '#lib/markdown.js';
 
 export const prerender = true;
 

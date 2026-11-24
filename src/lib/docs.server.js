@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { slugify } from '$lib/slug.js';
+import { slugify } from '#lib/slug.js';
 
 /**
  * @typedef {Object} DocMeta

@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	/** @type {{ nav: Array<{ slug: string; title: string; pages: Array<{ slug: string; title: string }> }>; onNavigate: () => void }} */
 	let { nav, onNavigate } = $props();
@@ -7,7 +7,7 @@
 	let query = $state('');
 
 	function currentPath() {
-		return $page.url.pathname;
+		return page.url.pathname;
 	}
 
 	/**
@@ -35,15 +35,15 @@
 					概述
 				</a>
 			{/if}
-			{#each group.pages as page}
-				{#if matches(page.title)}
+			{#each group.pages as p}
+				{#if matches(p.title)}
 					<a
-						href={`/docs/${page.slug}`}
-						class:active={currentPath() === `/docs/${page.slug}`}
+						href={`/docs/${p.slug}`}
+						class:active={currentPath() === `/docs/${p.slug}`}
 						class:sub={true}
 						onclick={onNavigate}
 					>
-						{page.title}
+						{p.title}
 					</a>
 				{/if}
 			{/each}

@@ -1,4 +1,4 @@
-import { buildNav } from '$lib/docs.server.js';
+import { buildNav } from '#lib/docs.server.js';
 
 export const prerender = true;
 

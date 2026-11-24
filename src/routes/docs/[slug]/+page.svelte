@@ -1,5 +1,5 @@
 <script>
-	import PrevNext from '$lib/components/PrevNext.svelte';
+	import PrevNext from '#lib/components/PrevNext.svelte';
 
 	let { data } = $props();
 </script>

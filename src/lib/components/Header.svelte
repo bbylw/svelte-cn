@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import ThemeToggle from './ThemeToggle.svelte';
 
 	let { onMenu } = $props();
@@ -15,7 +15,7 @@
 	 * @param {string} href
 	 */
 	function isActive(href) {
-		const path = $page.url.pathname;
+		const path = page.url.pathname;
 		if (href === '/docs') return path === '/docs' || path.startsWith('/docs/');
 		return path.startsWith(href);
 	}

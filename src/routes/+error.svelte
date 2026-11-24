@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 </script>
 
 <svelte:head>
@@ -8,8 +8,8 @@
 
 <div class="home">
 	<section class="hero">
-		<h1>{$page.status}</h1>
-		<p>{$page.error?.message || '页面未找到'}</p>
+		<h1>{page.status}</h1>
+		<p>{page.error?.message || '页面未找到'}</p>
 		<div class="cta">
 			<a class="btn primary" href="/">返回首页</a>
 			<a class="btn ghost" href="/docs">浏览文档</a>
