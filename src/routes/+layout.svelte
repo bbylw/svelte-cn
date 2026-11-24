@@ -29,14 +29,14 @@
 
 <a class="skip-link" href="#main">跳到主要内容</a>
 
-<Header onMenu={() => (menuOpen = !menuOpen)} />
+<Header onMenu={() => (menuOpen = !menuOpen)} showMenu={isDocs} menuOpen={menuOpen} />
 
 {#if isDocs}
 	{#if menuOpen}
 		<button class="scrim" onclick={() => (menuOpen = false)} aria-label="关闭菜单"></button>
 	{/if}
 	<div class="docs-shell" class:no-toc={!hasToc}>
-		<Sidebar nav={data.nav} onNavigate={() => (menuOpen = false)} />
+		<Sidebar nav={data.nav} onNavigate={() => (menuOpen = false)} open={menuOpen} />
 		<main class="content" id="main" tabindex="-1">
 			{@render children()}
 		</main>

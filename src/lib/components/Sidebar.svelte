@@ -1,8 +1,14 @@
 <script>
 	import { page } from '$app/state';
 
-	/** @type {{ nav: Array<{ slug: string; title: string; pages: Array<{ slug: string; title: string }> }>; onNavigate: () => void }} */
-	let { nav, onNavigate } = $props();
+	/**
+	 * @type {{
+	 *   nav: Array<{ slug: string; title: string; pages: Array<{ slug: string; title: string }> }>;
+	 *   onNavigate: () => void;
+	 *   open?: boolean;
+	 * }}
+	 */
+	let { nav, onNavigate, open = false } = $props();
 
 	let query = $state('');
 
@@ -19,7 +25,7 @@
 	}
 </script>
 
-<aside class="sidebar">
+<aside class="sidebar" id="docs-nav" class:open>
 	<input class="search" type="search" placeholder="搜索文档…" bind:value={query} />
 
 	{#each nav as group}
