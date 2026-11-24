@@ -148,9 +148,6 @@ main:focus {
 	height: 28px;
 	border-radius: 7px;
 }
-.site-header .brand .cn {
-	color: var(--accent);
-}
 
 .site-header nav {
 	display: flex;

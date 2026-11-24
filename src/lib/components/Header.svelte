@@ -46,7 +46,7 @@
 
 	<a class="brand" href="/">
 		<img src="/favicon.svg" alt="Svelte" />
-		<span>Svelte<span class="cn">中文</span></span>
+		<span>Svelte</span>
 	</a>
 
 	<nav>

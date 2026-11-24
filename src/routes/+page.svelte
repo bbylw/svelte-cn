@@ -16,12 +16,12 @@ $effect(() => {
 </script>
 
 <svelte:head>
-	<title>Svelte 中文文档 · 用于构建 Web 用户界面的编译器框架</title>
+	<title>Svelte · 用于构建 Web 用户界面的编译器框架</title>
 </svelte:head>
 
 <div class="home">
 	<section class="hero">
-		<span class="eyebrow">Svelte 5 · Runes · 中文文档</span>
+		<span class="eyebrow">Svelte 5 · Runes</span>
 		<h1>编写更少的代码，<br /><span class="grad">构建更快的应用</span></h1>
 		<p>
 			Svelte 是一个用于构建 Web 用户界面的框架。它是一款编译器，能把你用 HTML、CSS 和

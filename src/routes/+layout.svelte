@@ -50,7 +50,7 @@
 
 <footer class="site-footer">
 	<p>
-		本网站内容为 Svelte 官方文档的中文翻译，仅供学习参考。Svelte 及其 Logo 版权归 Svelte 团队所有。
+		Svelte 及其 Logo 版权归 Svelte 团队所有。
 	</p>
 </footer>
 
