@@ -62,6 +62,37 @@ export const userState = $state({
 
 当你拥有复杂的异步数据流，或者需要更手动地控制更新值或监听变更时，stores 依然是一个不错的方案。如果你熟悉 RxJs 并希望复用相关知识，`$` 对你来说也会很顺手。
 
+## stores 的粒度
+
+store 会就其_整个_值通知订阅者。与深度响应式的 [`$state` 代理]($state#Deep-state) 不同，store 中持有的普通对象不会追踪对单个属性的读取。因此，一个读取了 `$user.name` 的 [`$effect`]($effect)，在 store 因另一个属性（比如 `age`）变化而更新时，也会重新运行。
+
+如果某个 effect 只应对某个特定的值做出反应，请用 [`$derived`]($derived) 选出该值：
+
+<!-- codeblock:start {"title":"$effect.tracking()"} -->
+```svelte
+<!--- file: App.svelte --->
+<script>
+	import { writable } from 'svelte/store';
+
+	const user = writable({ name: 'Ada', age: 36 });
+	let name = $derived($user.name);
+
+	$effect(() => {
+		// name 或 age 变化时都会重新运行
+		console.log('Store updated:', $user.name);
+	});
+
+	$effect(() => {
+		// 仅在 name 变化时重新运行
+		console.log('Name changed:', name);
+	});
+</script>
+
+<button onclick={() => ($user.age += 1)}>Increase age</button>
+<button onclick={() => ($user.name += '!')}>Change name</button>
+```
+<!-- codeblock:end -->
+
 ## svelte/store
 
 `svelte/store` 模块包含了一个满足 store 契约的最小化 store 实现。它提供了用于创建可从外部更新的 store、只能从内部更新的 store，以及用于组合和派生 store 的方法。

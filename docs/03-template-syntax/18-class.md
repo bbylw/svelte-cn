@@ -1,6 +1,6 @@
 ---
 title: class
-tags: template-style
+tags: template-class
 ---
 
 在元素上设置 class 有两种方式：`class` 属性和 `class:` 指令。

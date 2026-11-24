@@ -13,7 +13,7 @@ title: {let/const ...}
 
 {#each boxes as box}
 	{const area = box.width * box.height}
-	{const label = `${box.width} ⨉ ${box.height} = ${area}`}
+	{const label = `${box.width} × ${box.height} = ${area}`}
 
 	<p>{label}</p>
 {/each}

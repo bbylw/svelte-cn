@@ -38,7 +38,7 @@ title: <svelte:boundary>
 
 对于随后的异步更新，`pending` 代码片段_不会_被显示——对于这些，你可以使用 [`$effect.pending()`]($effect#$effect.pending)。
 
-> [!NOTE] 在[playground](/playground) 中，你的应用被渲染在一个带有空 `pending` 代码片段的边界内部，这样你就可以直接使用 `await` 而无需自己创建边界。
+> [!NOTE] 在服务端渲染期间，带有 `pending` 代码片段的边界会渲染该代码片段，并忽略其中其余的内容。参见[服务端渲染](await-expressions#Server-side-rendering)。
 
 ### `failed`
 
@@ -108,7 +108,7 @@ title: <svelte:boundary>
 
 自 5.51 起，你可以通过使用一个带有 `failed` 代码片段的边界，并传入一个 `transformError` 函数调用 [`render(...)`](imperative-component-api#render) 来控制这一行为。
 
-> [!NOTE] 如果你是通过像 SvelteKit 这样的框架来使用 Svelte，你很可能无法直接访问 `render(...)` 调用——框架必须代为配置 `transformError`。SvelteKit 将在近期通过 [`handleError`](../kit/hooks#Shared-hooks-handleError) 钩子添加对此的支持。
+> [!NOTE] 如果你是通过像 SvelteKit 这样的框架来使用 Svelte，你很可能无法直接访问 `render(...)` 调用——框架必须代为配置 `transformError`。SvelteKit 将在近期通过 [`handleError`](../kit/hooks#handleError) 钩子添加对此的支持。
 
 `transformError` 函数必须返回一个可被 JSON 序列化的对象，该对象将被用于渲染 `failed` 代码片段。这个对象会被序列化，并用于在浏览器中 hydrate 该代码片段：
 

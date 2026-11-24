@@ -170,6 +170,12 @@ let count: number = $state(0);
 let count: number = $state();
 ```
 
+你可以将类型作为泛型参数直接传入，以稳妥地处理这种情况。TypeScript 会把该变量推断为 `number | undefined`。
+
+```ts
+let count = $state<number>();
+```
+
 如果你知道该变量在你首次使用它之前_一定_会被定义，请使用 `as` 强制转换。这在类的上下文中尤其有用：
 
 ```ts

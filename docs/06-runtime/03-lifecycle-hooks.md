@@ -102,7 +102,7 @@ Svelte 4 包含了在组件整体更新之前和之后运行的钩子。为了�
 
 在 Svelte 4 中，我们使用 `beforeUpdate` 来做这件事，但这是一种有缺陷的方法——它会在_每一次_更新前触发，无论是否相关。在下面的示例中，我们需要引入像 `updatingMessages` 这样的检查，以确保在有人切换深色模式时不会干扰滚动位置。
 
-使用符文，我们可以使用 `$effect.pre`，它的行为与 `$effect` 相同，但会在 DOM 更新之前运行。只要我们在 effect 函数体内显式引用 `messages`，它就会在 `messages` 变化时运行，但_不会_在 `theme` 变化时运行。
+使用符文，我们可以使用 `$effect.pre`，它的行为与 `$effect` 相同，但会在它之后所调度的 DOM 更新之前运行（确切的执行顺序见 [$effect.pre]($effect#$effect.pre)）。只要我们在 effect 函数体内显式引用 `messages`，它就会在 `messages` 变化时运行，但_不会_在 `theme` 变化时运行。
 
 因此，`beforeUpdate` 及其同样麻烦的对应项 `afterUpdate` 在 Svelte 5 中已被弃用。
 

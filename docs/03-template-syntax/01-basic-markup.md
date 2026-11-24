@@ -202,7 +202,7 @@ _展开属性_允许一次性将许多属性或特性传递给元素或组件。
 - 你也可以在这里使用代码块。
 - 用法：
   ```html
-  <Main name="Arethra">
+  <Main name="Aretha">
   ```
 -->
 <script>
@@ -215,3 +215,14 @@ _展开属性_允许一次性将许多属性或特性传递给元素或组件。
 	</h1>
 </main>
 ````
+
+你也可以在标签内部的属性之间放置 JavaScript 风格的注释：
+
+```svelte
+<div
+  // this is a comment!
+  data-foo="bar"
+>
+  foo bar
+</div>
+```

@@ -99,7 +99,9 @@ _端到端测试_：为了确保你的用户能够与你的应用交互，有必
 
 虽然大多数移动应用并不使用 JavaScript 编写，但如果你想在构建移动应用时利用你现有的 Svelte 组件和 Svelte 知识，你可以将一个 [SvelteKit SPA](https://kit.svelte.dev/docs/single-page-apps) 通过 [Tauri](https://v2.tauri.app/start/frontend/sveltekit/) 或 [Capacitor](https://capacitorjs.com/solution/svelte) 转变为移动应用。相机、地理定位和推送通知等移动特性，在这两个平台上都可以通过插件获得。
 
-关于 [Svelte 5 中自定义渲染器支持](https://github.com/sveltejs/svelte/issues/15470) 的工作已经取得了一些进展，但该特性目前尚不可用。自定义渲染 API 将支持 Lynx JS 和 Svelte Native 等更多的移动框架。Svelte Native 是 Svelte 4 的一个可用选项，但 Svelte 5 目前并不支持它。Svelte Native 让你能够使用包含 [NativeScript UI 组件](https://docs.nativescript.org/ui/)（而非 DOM 元素）的 Svelte 组件来编写 NativeScript 应用，这对来自 React Native 的用户来说可能比较熟悉。
+你也可以使用 [Symbiote Native](https://docs.symbiote-native.dev/) 编写编译为原生组件的 Svelte 应用，它借助了 React Native 所提供的基础设施。
+
+Svelte 5 还对[自定义渲染器](custom-renderers) 提供了实验性支持，它让 Svelte 组件可以渲染到 DOM 以外的目标。这将使 Lynx JS 和 Svelte Native 等更多的移动框架得到支持，Symbiote Native 也将采用这一 API。Svelte Native 是 Svelte 4 的一个可用选项，但 Svelte 5 目前并不支持它。Svelte Native 让你能够使用包含 [NativeScript UI 组件](https://docs.nativescript.org/ui/)（而非 DOM 元素）的 Svelte 组件来编写 NativeScript 应用。
 
 ## 我能告诉 Svelte 不要移除我未使用的样式吗？
 
@@ -116,7 +118,7 @@ Svelte 的组件样式作用域机制会生成一个对给定组件唯一的类�
 
 它不会再添加新特性，而且 bug 大概只会在极其恶劣或存在某种安全漏洞时才会被修复。
 
-文档仍可在 [这里](https://v2.svelte.dev/guide) 获取。
+文档仍可在 [这里](https://github.com/sveltejs/v2.svelte.dev/tree/master/content) 获取。
 
 ## 如何进行热模块替换？
 

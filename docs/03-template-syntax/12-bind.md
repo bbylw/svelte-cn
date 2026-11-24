@@ -1,5 +1,6 @@
 ﻿---
 title: bind:
+tags: template-bind
 ---
 
 数据通常是向下流动，从父组件到子组件。`bind:` 指令允许数据反向流动，从子组件到父组件。
@@ -182,7 +183,7 @@ Svelte 会创建一个事件监听器来更新被绑定的值。如果某个元�
 ```
 <!-- codeblock:end -->
 
-> [!NOTE] `bind:group` 只有在输入位于同一个 Svelte 组件中时才能正常工作。
+> [!NOTE] 复选框组的数组由同一个组件实例中被勾选的复选框构建。如果每个复选框都在各自的组件中，勾选其中一个会替换整个数组，而不是向其中添加。单选组可以跨组件工作，只要值是通过 [`$bindable`]($bindable) prop 绑定的。
 
 ## `<input bind:files>`
 
@@ -248,6 +249,19 @@ Svelte 会创建一个事件监听器来更新被绑定的值。如果某个元�
 	<option value={b} selected>b</option>
 	<option value={c}>c</option>
 </select>
+```
+
+自 5.57.0 起，如果 `<select>` 拥有 `defaultValue` 且属于某个表单的一部分，那么表单被重置时，它会恢复到该值，而不是空字符串。注意，在初次渲染时，除非绑定值为 `null` 或 `undefined`，否则绑定值优先。
+
+```svelte
+<form>
+	<select bind:value defaultValue="b">
+		<option>a</option>
+		<option>b</option>
+		<option>c</option>
+	</select>
+	<input type="reset" value="Reset">
+</form>
 ```
 
 ## `<audio>` {#audio}

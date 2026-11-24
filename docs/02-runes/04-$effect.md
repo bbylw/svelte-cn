@@ -205,6 +205,8 @@ $effect(() => {
 </div>
 ```
 
+`$effect.pre` 运行在它之后所调度的 DOM 更新之前，而_不是_在 flush 中的每一次 DOM 变更之前——父组件的 DOM 可能已经被更新。使用 [await 表达式](await-expressions) 时，同一组件中的 `{#if ...}` 和 `{#each ...}` 等块更新也会在 `$effect.pre` 之前运行。
+
 除了时机之外，`$effect.pre` 的工作方式与 `$effect` 完全相同。
 
 ## `$effect.tracking`

@@ -4,7 +4,7 @@ title: 上下文（Context）
 
 上下文（context）让组件能够访问由父组件持有的值，而无需将它们作为 props 向下传递（否则可能需要穿过许多层中间组件，即所谓的"prop-drilling"）。
 
-通过使用 `createContext` 创建一个 `[get, set]` 函数对，你可以在父组件中设置上下文，并在子组件中获取它：
+通过使用 `createContext` 创建一个 `[get, set, has]` 函数三元组，你可以在父组件中设置上下文，并在子组件中获取它：
 
 <!-- codeblock:start {"title":"Context","selected":"context.ts"} -->
 ```svelte
@@ -165,9 +165,9 @@ export const [getCounter, setCounter] = createContext<Counter>();
 
 类似地，要通过上下文传递原始值，请使用[将状态传入函数]($state#Passing-state-into-functions) 中描述的函数方式。
 
-## 组件测试
+## 使用上下文挂载组件
 
-在编写[组件测试](testing#Unit-and-component-tests-with-Vitest-Component-testing) 时，创建一个设置上下文的包装组件来检查使用该上下文的组件的行为，往往很有用。自 5.49 版本起，你可以做这样的事情：
+要使用特定的上下文挂载组件，请创建一个在渲染组件之前先设置上下文的包装组件。这对于[组件测试](testing#Unit-and-component-tests-with-Vitest-Component-testing) 很有用，也适用于其他任何需要通过 `mount` 提供上下文的场景。自 5.49 版本起，你可以做这样的事情：
 
 ```js
 import { mount, unmount } from 'svelte';
@@ -192,6 +192,8 @@ test('MyComponent', () => {
 ```
 
 这种方法同样适用于 [`hydrate`](imperative-component-api#hydrate) 和 [`render`](imperative-component-api#render)。
+
+包装组件设置的上下文只作用于该已挂载的组件树。每次调用 `mount`、`hydrate` 或 `render` 都会创建一个独立的包装实例，因此上下文不会泄露到其他已挂载的组件中。
 
 ## 取代全局状态
 

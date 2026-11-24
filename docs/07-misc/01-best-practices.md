@@ -70,6 +70,10 @@ let color = type === 'danger' ? 'red' : 'green';
 
 `$inspect.trace` 是一个用于响应性的调试工具。如果某个东西没有正确地更新，或者运行得比它应该运行的次数更多，你可以将 `$inspect.trace(label)` 作为 `$effect` 或 `$derived.by`（或它们调用的任何函数）的第一行，来追踪它们的依赖关系，并找出是哪个依赖触发了更新。
 
+## `#key` 块
+
+当你希望某个表达式变化时运行过渡/动画时，`#key` 块很有用，但它可能非常昂贵——每次都会卸载其中的每一个元素/组件，因此应谨慎使用。例如，与其使用 `#key` 来让子组件 `<script>` 块中的表达式重新运行，不如考虑将这些表达式包裹在 `$derived` 中。
+
 ## 事件
 
 任何以 `on` 开头的元素属性都会被当作事件监听器：
@@ -167,7 +171,7 @@ let color = type === 'danger' ? 'red' : 'green';
 
 ## 异步 Svelte
 
-如果你使用的是 5.36 或更高版本，可以使用 [await 表达式](await-expressions) 和 [hydratable](hydratable) 在组件内部直接使用 promise。注意，由于它们尚未被认为完全稳定，因此需要先在 `svelte.config.js` 中启用 `experimental.async` 选项。
+如果你使用的是 5.36 或更高版本，可以使用 [await 表达式](await-expressions) 和 [hydratable](hydratable) 在组件内部直接使用 promise。注意，由于它们尚未被认为完全稳定，因此需要先在 `vite.config.js` 的插件选项中或 `svelte.config.js` 中启用 `experimental.async` 选项。
 
 ## 避免使用遗留特性
 

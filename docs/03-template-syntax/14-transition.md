@@ -53,6 +53,12 @@ _过渡（transition）_ 是由状态变化导致元素进入或离开 DOM 时�
 {/if}
 ```
 
+## 无障碍
+
+过渡由 [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) 驱动，而不是由 CSS 驱动。因此，将 `transition-duration` 和 `animation-duration` 置零的全局 `@media (prefers-reduced-motion: reduce)` 规则对它们没有任何效果。
+
+对于请求减少动态效果（reduced motion）的设备，请使用 [`prefersReducedMotion`](svelte-motion#prefersReducedMotion) 相应地调整（或完全禁用）过渡。
+
 ## 自定义过渡函数
 
 ```js

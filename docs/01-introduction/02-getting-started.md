@@ -21,6 +21,8 @@ npm run dev
 
 此外还有[适用于其他打包工具的插件](/packages#bundler-plugins)，但我们推荐使用 Vite。
 
+如果要为由 Rails、Laravel 等非 JavaScript 后端所服务的页面添加 Svelte，请遵循 Vite 的[后端集成指南](https://vite.dev/guide/backend-integration)，并使用 [`mount`](imperative-component-api#mount) 将组件渲染到页面中。
+
 ## 编辑器工具
 
 Svelte 团队维护了一款 [VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode)，同时也提供了与各种其他[编辑器](https://sveltesociety.dev/collection/editor-support-c85c080efc292a34)和工具的集成支持。

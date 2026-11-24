@@ -52,3 +52,5 @@ title: $bindable
 /// file: FancyInput.svelte
 let { value = $bindable('fallback'), ...props } = $props();
 ```
+
+当可绑定 prop 拥有回退值时，如果父组件使用 `bind:`，就必须传入一个不为 `undefined` 的值。这样可以避免"该以哪个值为准"的歧义，因为父组件与子组件对于绑定应当共享同一个值。

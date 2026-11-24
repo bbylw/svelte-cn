@@ -15,6 +15,7 @@ title: 参考
 - [svelte/events](/docs/svelte-events)：事件辅助函数
 - [svelte/legacy](/docs/svelte-legacy)：从旧版本迁移的兼容 API
 - [svelte/motion](/docs/svelte-motion)：运动/过渡相关 API
+- [svelte/renderer](/docs/svelte-renderer)：自定义渲染器 API
 - [svelte/reactivity](/docs/svelte-reactivity)：响应式工具
 - [svelte/reactivity/window](/docs/svelte-reactivity-window)：与 window 相关的响应式状态
 - [svelte/server](/docs/svelte-server)：服务端渲染相关 API
