@@ -689,14 +689,32 @@ main:focus {
 .menu-btn {
 	display: none;
 }
-/* 窄屏隐藏顶部链接，导航改由抽屉/页面内链接承担，避免 header 溢出 */
+/* 窄屏把顶部链接换到第二行：全部可达，又不会把 header 撑出横向滚动 */
 @media (max-width: 720px) {
+	:root {
+		--header-h: 100px;
+	}
 	.site-header {
-		gap: 10px;
-		padding: 0 16px;
+		height: auto;
+		min-height: var(--header-h);
+		flex-wrap: wrap;
+		column-gap: 10px;
+		row-gap: 2px;
+		padding: 8px 16px 0;
 	}
 	.site-header nav {
-		display: none;
+		order: 3;
+		flex: 1 0 100%;
+		margin: 0;
+		gap: 2px;
+		overflow-x: auto;
+		scrollbar-width: none;
+		padding-bottom: 6px;
+	}
+	.site-header nav a {
+		white-space: nowrap;
+		padding: 6px 10px;
+		font-size: 0.88rem;
 	}
 }
 @media (max-width: 1024px) {
